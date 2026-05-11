@@ -3,27 +3,43 @@
  */
 
 // 1. CONFIGURAÇÕES GERAIS
-// ATENÇÃO: Coloque uma chave PIX real e ativa aqui para testar. Se for um CPF inventado, o banco vai recusar.
-const PIX_KEY = "02037344244"; 
+const PIX_KEY = "cortesjr98@gmail.com"; 
 const WHATSAPP_CONFIRMACAO = "+5569999891210"; 
 
-// LISTA DE PRESENTES ATUALIZADA
+// LISTA DE PRESENTES MISTA (Brincadeiras e Reais)
 const presentes = [
     { nome: "Só pra não dizer que não dei nada", valor: 50.00, img: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=500&q=80" },
     { nome: "Controle remoto extra para evitar brigas", valor: 75.00, img: "https://images.unsplash.com/photo-1593344484962-796055d4a3a4?w=500&q=80" },
-    { nome: "Tampão de ouvido potente", valor: 90.00, img: "https://audinove.com.br/assets/images/tamp1-778x974.jpg" },
+    { nome: "Tampão de ouvido potente para o noivo", valor: 90.00, img: "https://audinove.com.br/assets/images/tamp1-778x974.jpg" },
+    { nome: "Livro de receitas com variações de macarrão instantâneo", valor: 105.63, img: "img/livrodemiojo.jpeg" },
+    { nome: "Fantasia sexy pra noiva usar na lua de mel", valor: 120.00, img: "img/fantasia.jpeg" },
+    { nome: "Jogo de Toalhas (Real)", valor: 120.00, img: "https://images.unsplash.com/photo-1616489953149-74d154ee6900?w=500&q=80" },
+    { nome: "Faqueiro Inox (Real)", valor: 130.00, img: "https://images.unsplash.com/photo-1583623025848-eb87747754d9?w=500&q=80" },
+    { nome: "Liquidificador (Real)", valor: 139.90, img: "img/Liquidificador.jpeg" },
+    { nome: "Mimo para bebê (não to grávida a bebê sou eu)", valor: 150.00, img: "img/mimopbebe.jpeg" },
+    { nome: "Curso de culinária para a noiva", valor: 150.00, img: "img/cursoculinaria.jpeg" },
     { nome: "Prioridade na fila do buffet", valor: 164.37, img: "https://images.unsplash.com/photo-1555244162-803834f70033?w=500&q=80" },
-    { nome: "Cota pra perguntar quando o casal terá filho", valor: 200.00, img: "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=500&q=80" },
-    { nome: "Poder reclamar do casamento ou festa", valor: 99999.00, img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGRirTyWL30TF18uyl4Cs5yZfy3DtaphUexMZG5SnkOSrJhGanLLAhzAKxgQ1ocD5cu_Ln5hLbL4FifN5JwCE5uWEaos5fBQNKkIjJXF5m1hdPcPFgy1mOepwrK_rQDRBskOnzAIAp_Xv7/s1600/Meme+do+ET+Me+Solta+Miga+Mandrak+Concurso+Photoshop.jpg" },
+    { nome: "Jogo de Lençol (Real)", valor: 180.00, img: "https://images.unsplash.com/photo-1588897045367-17ed3c20dbbf?w=500&q=80" },
+    { nome: "Cobertor para a noiva estar sempre coberta de razão", valor: 200.00, img: "https://images.unsplash.com/photo-1580301762395-21ce84d00bc6?w=500&q=80" },
+    { nome: "Cota pra perguntar quando o casal terá filho", valor: 220.00, img: "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=500&q=80" },
+    { nome: "Conjunto de Panelas (Real)", valor: 250.00, img: "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?w=500&q=80" },
+    { nome: "AirFryer (Real)", valor: 300.00, img: "img/AirFray.jpeg" },
     { nome: "Psicólogo para os noivos não surtarem", valor: 350.00, img: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=500&q=80" },
     { nome: "Diárias no hotel 5 estrelas", valor: 400.00, img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&q=80" },
+    { nome: "Microondas (Real)", valor: 550.00, img: "img/Microondas.jpeg" },
     { nome: "Deus te iluminou e vc resolveu ajudar na viagem", valor: 986.22, img: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=500&q=80" },
-    { nome: "Patrocínio Premium - Cota Ouro Padrinho Rico", valor: 5000.00, img: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=500&q=80" }
+    { nome: "Aluguel de bebê para treinamento", valor: 2470.30, img: "img/Bebeptreinamento.jpeg" },
+    { nome: "Patrocínio Premium - Cota Ouro Padrinho Rico", valor: 5000.00, img: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=500&q=80" },
+    { nome: "Poder reclamar do casamento ou festa", valor: 99999.00, img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGRirTyWL30TF18uyl4Cs5yZfy3DtaphUexMZG5SnkOSrJhGanLLAhzAKxgQ1ocD5cu_Ln5hLbL4FifN5JwCE5uWEaos5fBQNKkIjJXF5m1hdPcPFgy1mOepwrK_rQDRBskOnzAIAp_Xv7/s1600/Meme+do+ET+Me+Solta+Miga+Mandrak+Concurso+Photoshop.jpg" }
 ];
 
-// 2. CARREGAR PRESENTES
+// 2. CARREGAR PRESENTES (Ordenados do menor para o maior valor)
 function renderGifts() {
     const container = document.getElementById('lista-presentes-container');
+    
+    // Ordena a lista de forma crescente
+    presentes.sort((a, b) => a.valor - b.valor);
+
     presentes.forEach(item => {
         const card = document.createElement('div');
         card.className = 'gift-card reveal';
@@ -47,13 +63,11 @@ function openPix(nome, valor) {
     const valorFormatado = valor.toFixed(2);
     document.getElementById("pixValue").innerText = valorFormatado.replace('.', ',');
 
-    // Configurações Limpas
     const chave = PIX_KEY.trim(); 
     const nomeRecebedor = "FABIANA E JUNIOR"; 
     const cidadeRecebedor = "ARIQUEMES"; 
-    const txid = "CASAMENTO"; // Sem caracteres especiais
+    const txid = "CASAMENTO"; 
 
-    // Montador de blocos do PIX
     const f = (id, conteudo) => {
         const tam = conteudo.length.toString().padStart(2, '0');
         return `${id}${tam}${conteudo}`;
@@ -74,7 +88,6 @@ function openPix(nome, valor) {
                   f('62', f('05', txid)) + 
                   '6304'; 
 
-    // CÁLCULO DO CRC16 COM PREVENÇÃO DE ERROS DE NAVEGADOR
     function crc16(str) {
         let crc = 0xFFFF;
         for (let i = 0; i < str.length; i++) {
@@ -135,7 +148,7 @@ setInterval(() => {
     }
 }, 1000);
 
-// 6. UTILITÁRIOS (LOADER, REVEAL, LIGHTBOX)
+// 6. UTILITÁRIOS
 window.addEventListener('load', () => {
     setTimeout(() => { document.getElementById('loader').style.display = 'none'; }, 1000);
     renderGifts();
