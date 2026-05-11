@@ -32,6 +32,8 @@ const presentes = [
     { nome: "AirFryer", valor: 350.00, img: "img/AirFray.jpeg" },
     { nome: "Psicólogo para os noivos não surtarem", valor: 350.00, img: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=500&q=80" },
     { nome: "Diárias no hotel 5 estrelas", valor: 400.00, img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&q=80" },
+    { nome: "Jogar buquê para você", valor: 500.00, img: "BuquePerto.jpeg" },
+    { nome: "Jogar buquê longe da sua mulher", valor: 500.00, img: "img/BuqueLonge.jpeg" },
     { nome: "Microondas", valor: 550.00, img: "img/Microondas.jpeg" },
     { nome: "Deus te iluminou e vc resolveu ajudar na viagem", valor: 986.22, img: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=500&q=80" },
     { nome: "Aluguel de bebê para treinamento", valor: 2470.30, img: "img/Bebeptreinamento.jpeg" },
