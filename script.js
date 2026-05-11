@@ -10,7 +10,7 @@ const WHATSAPP_CONFIRMACAO = "+5569999891210";
 const presentes = [
     { nome: "Só pra não dizer que não dei nada", valor: 50.00, img: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=500&q=80" },
     { nome: "Porquinho para ajudar a engordar as economias", valor: 65.00, img: "img/porco_magro.jpg" },
-    { nome: "Controle remoto extra para evitar brigas", valor: 75.00, img: "https://images.unsplash.com/photo-1593344484962-796055d4a3a4?w=500&q=80" },
+    { nome: "Controle remoto extra para evitar brigas", valor: 75.00, img: "img/controleremoto.jpeg" },
     { nome: "Tampão de ouvido potente", valor: 90.00, img: "https://audinove.com.br/assets/images/tamp1-778x974.jpg" },
     { nome: "Caixa de paciência em cápsulas (uso contínuo)", valor: 95.00, img: "img/remedio_paciencia.jpg" },
     { nome: "Livro de receitas com variações de macarrão instantâneo", valor: 105.63, img: "img/livrodemiojo.jpeg" },
