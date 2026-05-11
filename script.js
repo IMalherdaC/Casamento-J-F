@@ -1,121 +1,180 @@
-:root {
-    --navy: #002347; 
-    --light-gray: #f4f4f7; 
-    --silver: #A0AEC0; 
-    --white: #ffffff;
-    --text: #333333;
-    --shadow: 0 10px 30px rgba(0,0,0,0.1);
+/**
+ * LÓGICA DO SITE FABIANA & JUNIOR
+ */
+
+// 1. CONFIGURAÇÕES GERAIS
+const PIX_KEY = "cortesjr98@gmail.com"; 
+const WHATSAPP_CONFIRMACAO = "+5569999891210"; 
+
+// LISTA DE PRESENTES MISTA (Brincadeiras e Reais)
+const presentes = [
+    { nome: "Só pra não dizer que não dei nada", valor: 50.00, img: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=500&q=80" },
+    { nome: "Porquinho para ajudar a engordar as economias", valor: 65.00, img: "img/porco_magro.jpg" },
+    { nome: "Controle remoto extra para evitar brigas", valor: 75.00, img: "https://images.unsplash.com/photo-1593344484962-796055d4a3a4?w=500&q=80" },
+    { nome: "Tampão de ouvido potente", valor: 90.00, img: "https://audinove.com.br/assets/images/tamp1-778x974.jpg" },
+    { nome: "Caixa de paciência em cápsulas (uso contínuo)", valor: 95.00, img: "img/remedio_paciencia.jpg" },
+    { nome: "Livro de receitas com variações de macarrão instantâneo", valor: 105.63, img: "img/livrodemiojo.jpeg" },
+    { nome: "Fantasia sexy pra noiva usar na lua de mel", valor: 120.00, img: "img/fantasia.jpeg" },
+    { nome: "Jogo de Toalhas (Real)", valor: 120.00, img: "https://images.unsplash.com/photo-1616489953149-74d154ee6900?w=500&q=80" },
+    { nome: "Faqueiro Inox (Real)", valor: 130.00, img: "https://images.unsplash.com/photo-1583623025848-eb87747754d9?w=500&q=80" },
+    { nome: "Liquidificador (Real)", valor: 139.90, img: "img/Liquidificador.jpeg" },
+    { nome: "Mimo para bebê (não to grávida a bebê sou eu)", valor: 150.00, img: "img/mimopbebe.jpeg" },
+    { nome: "Curso de culinária para a noiva", valor: 150.00, img: "img/cursoculinaria.jpeg" },
+    { nome: "Cafeteira elétrica (Real)", valor: 160.00, img: "img/Cafeteira elétrica.jpeg" },
+    { nome: "Prioridade na fila do buffet", valor: 164.37, img: "https://images.unsplash.com/photo-1555244162-803834f70033?w=500&q=80" },
+    { nome: "Jogo de Lençol (Real)", valor: 180.00, img: "https://images.unsplash.com/photo-1588897045367-17ed3c20dbbf?w=500&q=80" },
+    { nome: "Cobertor para a noiva estar sempre coberta de razão", valor: 200.00, img: "img/coberta_de_razao.jpg" },
+    { nome: "Cota pra perguntar quando o casal terá filho", valor: 200.00, img: "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=500&q=80" },
+    { nome: "Jogo de prato para o primeiro jantar dos noivos (Real)", valor: 220.00, img: "img/Jogo de prato para o primeiro jantar dos noivos.jpeg" },
+    { nome: "Gasolina pro carro de fuga da sogra", valor: 250.00, img: "img/casal_fugindo_sogra.jpg" },
+    { nome: "Aspirador de pó (Real)", valor: 250.00, img: "img/Aspirador de pó.jpeg" },
+    { nome: "Conjunto de Panelas (Real)", valor: 299.90, img: "img/Conjunto de Panela.jpeg" },
+    { nome: "AirFryer (Real)", valor: 350.00, img: "img/AirFray.jpeg" },
+    { nome: "Psicólogo para os noivos não surtarem", valor: 350.00, img: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=500&q=80" },
+    { nome: "Diárias no hotel 5 estrelas", valor: 400.00, img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&q=80" },
+    { nome: "Microondas (Real)", valor: 550.00, img: "img/Microondas.jpeg" },
+    { nome: "Deus te iluminou e vc resolveu ajudar na viagem", valor: 986.22, img: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=500&q=80" },
+    { nome: "Aluguel de bebê para treinamento", valor: 2470.30, img: "img/Bebeptreinamento.jpeg" },
+    { nome: "Patrocínio Premium - Cota Ouro Padrinho Rico", valor: 5000.00, img: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=500&q=80" },
+    { nome: "Poder reclamar do casamento ou festa", valor: 99999.00, img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGRirTyWL30TF18uyl4Cs5yZfy3DtaphUexMZG5SnkOSrJhGanLLAhzAKxgQ1ocD5cu_Ln5hLbL4FifN5JwCE5uWEaos5fBQNKkIjJXF5m1hdPcPFgy1mOepwrK_rQDRBskOnzAIAp_Xv7/s1600/Meme+do+ET+Me+Solta+Miga+Mandrak+Concurso+Photoshop.jpg" }
+];
+
+// 2. CARREGAR PRESENTES (Ordenados do menor para o maior valor)
+function renderGifts() {
+    const container = document.getElementById('lista-presentes-container');
+    
+    // Ordena a lista de forma crescente
+    presentes.sort((a, b) => a.valor - b.valor);
+
+    presentes.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'gift-card reveal';
+        card.innerHTML = `
+            <div>
+                <img src="${item.img}" alt="${item.nome}">
+                <h4>${item.nome}</h4>
+            </div>
+            <div>
+                <span class="price">R$ ${item.valor.toFixed(2).replace('.', ',')}</span>
+                <button onclick="openPix('${item.nome}', ${item.valor})" class="btn-primary btn-full">Presentear</button>
+            </div>
+        `;
+        container.appendChild(card);
+    });
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-body { font-family: 'Montserrat', sans-serif; color: var(--text); background: var(--white); }
-h1, h2, h3 { font-family: 'Playfair Display', serif; }
+// 3. LÓGICA DO PIX DINÂMICA E BLINDADA
+function openPix(nome, valor) {
+    document.getElementById("pixGift").innerText = nome;
+    const valorFormatado = valor.toFixed(2);
+    document.getElementById("pixValue").innerText = valorFormatado.replace('.', ',');
 
-/* NAVBAR */
-.navbar {
-    position: fixed; top: 0; width: 100%; padding: 20px 50px;
-    display: flex; justify-content: space-between; align-items: center;
-    background: rgba(255,255,255,0.95); z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    const chave = PIX_KEY.trim(); 
+    const nomeRecebedor = "FABIANA E JUNIOR"; 
+    const cidadeRecebedor = "ARIQUEMES"; 
+    const txid = "CASAMENTO"; 
+
+    const f = (id, conteudo) => {
+        const tam = conteudo.length.toString().padStart(2, '0');
+        return `${id}${tam}${conteudo}`;
+    };
+
+    const gui = f('00', 'BR.GOV.BCB.PIX');
+    const chavePix = f('01', chave);
+    const merchantAccountInfo = f('26', gui + chavePix);
+
+    let payload = f('00', '01') + 
+                  merchantAccountInfo +
+                  f('52', '0000') + 
+                  f('53', '986') + 
+                  f('54', valorFormatado) + 
+                  f('58', 'BR') + 
+                  f('59', nomeRecebedor) + 
+                  f('60', cidadeRecebedor) + 
+                  f('62', f('05', txid)) + 
+                  '6304'; 
+
+    function crc16(str) {
+        let crc = 0xFFFF;
+        for (let i = 0; i < str.length; i++) {
+            crc ^= (str.charCodeAt(i) << 8) & 0xFFFF;
+            for (let j = 0; j < 8; j++) {
+                if ((crc & 0x8000) !== 0) {
+                    crc = ((crc << 1) ^ 0x1021) & 0xFFFF;
+                } else {
+                    crc = (crc << 1) & 0xFFFF;
+                }
+            }
+        }
+        return crc.toString(16).toUpperCase().padStart(4, '0');
+    }
+
+    const codigoFinal = payload + crc16(payload);
+
+    document.getElementById("pixCode").value = codigoFinal;
+    document.getElementById("pixQr").src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(codigoFinal)}`;
+    document.getElementById("pixModal").style.display = "flex";
 }
-.nav-logo { font-family: 'Playfair Display'; font-size: 1.5rem; font-weight: bold; color: var(--navy); }
-.nav-links { list-style: none; display: flex; gap: 25px; }
-.nav-links a { text-decoration: none; color: var(--navy); font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
-.nav-links a:hover { color: var(--silver); }
 
-/* HERO SECTION */
-.hero {
-    height: 100vh;
-    background-image: url("img/JeF 5.jpeg");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    display: flex; align-items: center; justify-content: center; text-align: center; color: white; position: relative;
+function closePix() {
+    document.getElementById("pixModal").style.display = "none";
 }
-.overlay { position: absolute; inset: 0; background: rgba(0, 35, 71, 0.4); }
-.hero-content { position: relative; z-index: 2; padding: 20px; }
-.hero h1 { font-size: 4.5rem; margin: 20px 0; letter-spacing: 2px; }
-.wedding-date-top { letter-spacing: 4px; font-weight: 300; border-bottom: 1px solid white; padding-bottom: 5px; }
 
-/* FAIXA DE INFO */
-.event-info-strip {
-    background: var(--navy); color: white;
-    display: flex; justify-content: space-around; padding: 40px 10%; text-align: center;
+function copyPix() {
+    const copyText = document.getElementById("pixCode");
+    copyText.select();
+    navigator.clipboard.writeText(copyText.value);
+    alert("Código PIX copiado! Cole no aplicativo do seu banco.");
 }
-.info-item h3 { font-size: 1.1rem; margin: 10px 0; letter-spacing: 2px; color: var(--silver); }
-.info-item i { font-size: 1.5rem; margin-bottom: 10px;}
-.border-side { border-left: 1px solid rgba(255,255,255,0.2); border-right: 1px solid rgba(255,255,255,0.2); padding: 0 40px; }
 
-/* COUNTDOWN */
-.countdown-container { margin-top: -40px; position: relative; z-index: 5; }
-#countdown { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-.time-box { 
-    background: white; padding: 20px; min-width: 100px; border-radius: 8px; 
-    box-shadow: var(--shadow); text-align: center; 
+// Fechar modal clicando fora dele
+window.onclick = function(event) {
+    const modal = document.getElementById("pixModal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 }
-.time-box span { font-size: 2rem; font-weight: bold; color: var(--navy); display: block; }
-.time-box p { font-size: 0.8rem; color: #777; text-transform: uppercase; }
 
-/* HISTORIA */
-.container { max-width: 1100px; margin: 0 auto; padding: 80px 20px; }
-.section-title { font-size: 2.5rem; color: var(--navy); margin-bottom: 30px; }
-.section-title.left { text-align: left; }
-.section-title.white { color: white; }
-.history-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
-.history-img img { width: 100%; border-radius: 15px; box-shadow: 20px 20px 0 var(--light-gray); object-fit: cover; height: 450px; }
-.history-text p { margin-bottom: 15px; line-height: 1.6; }
+// 5. CONTAGEM REGRESSIVA
+const weddingDate = new Date("August 15, 2026 15:30:00").getTime();
+setInterval(() => {
+    const now = new Date().getTime();
+    const diff = weddingDate - now;
 
-/* PRESENTES */
-.gifts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; margin-top: 40px; }
-.gift-card { background: white; border: 1px solid #eee; padding: 20px; border-radius: 12px; text-align: center; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
-.gift-card:hover { transform: translateY(-10px); box-shadow: var(--shadow); border-color: var(--navy); }
-.gift-card img { width: 100%; height: 180px; object-fit: contain; background: #fff; border-radius: 8px; margin-bottom: 15px; }
-.gift-card h4 { font-size: 1rem; margin-bottom: 10px; color: var(--navy); min-height: 40px; }
-.gift-card .price { font-weight: bold; font-size: 1.3rem; display: block; margin-bottom: 15px; color: #27ae60; }
+    if(diff > 0) {
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
 
-/* BOTOES */
-.btn-primary { 
-    background: var(--navy); color: white; padding: 15px 35px; border-radius: 50px; 
-    text-decoration: none; display: inline-block; font-weight: 600; border: none; cursor: pointer; transition: 0.3s;
+        document.getElementById("days").innerText = d;
+        document.getElementById("hours").innerText = h;
+        document.getElementById("minutes").innerText = m;
+        document.getElementById("seconds").innerText = s;
+    }
+}, 1000);
+
+// 6. UTILITÁRIOS
+window.addEventListener('load', () => {
+    setTimeout(() => { document.getElementById('loader').style.display = 'none'; }, 1000);
+    renderGifts();
+    reveal(); 
+});
+
+function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+    for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        if (elementTop < windowHeight - 50) { reveals[i].classList.add("active"); }
+    }
 }
-.btn-primary:hover { background: #003a75; transform: scale(1.02); }
-.btn-full { width: 100%; }
+window.addEventListener("scroll", reveal);
 
-/* GALERIA */
-.bg-navy { background: var(--navy); }
-.gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
-.gallery-grid img { width: 100%; height: 250px; object-fit: cover; border-radius: 8px; cursor: pointer; transition: 0.4s; }
-.gallery-grid img:hover { filter: brightness(1.2); transform: scale(1.02); }
-
-/* MODAL PIX */
-.modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; }
-.modal-content { background:white; padding: 30px; width: 90%; max-width: 400px; border-radius: 15px; text-align: center; position: relative; box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
-.close-btn { position: absolute; top: 10px; right: 20px; font-size: 32px; font-weight: bold; cursor: pointer; color: #999; transition: 0.2s; }
-.close-btn:hover { color: #e74c3c; }
-.pix-value { font-size: 1.5rem; font-weight: bold; color: #27ae60; margin: 10px 0; }
-#pixQr { width: 200px; margin: 20px auto; border: 1px solid #eee; padding: 10px; border-radius: 10px; }
-.pix-copy-area { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
-#pixCode { padding: 12px; border: 1px solid #ccc; border-radius: 8px; text-align: center; font-family: monospace; color: #666; background: #f9f9f9; }
-
-/* REVEAL ANIMATION */
-.reveal { opacity: 0; transform: translateY(30px); transition: 1s all ease; }
-.reveal.active { opacity: 1; transform: translateY(0); }
-
-/* LIGHTBOX */
-#lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 3000; justify-content: center; align-items: center; }
-#lightbox img { max-width: 90%; max-height: 90%; border-radius: 8px; }
-
-/* LOADER */
-#loader { position:fixed; inset:0; background:white; display:flex; justify-content:center; align-items:center; z-index:9999; }
-.loader-content { text-align: center; }
-.loader-content h1 { font-size: 3rem; color: var(--navy); animation: pulse 2s infinite; }
-
-@keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
-
-@media (max-width: 768px) {
-    .hero h1 { font-size: 2.8rem; }
-    .history-grid, .event-info-strip { grid-template-columns: 1fr; flex-direction: column; gap: 30px; }
-    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-    .border-side { border: none; padding: 0; }
-    .nav-links { display: none; }
+function openLightbox(src) {
+    document.getElementById("lightbox-img").src = src;
+    document.getElementById("lightbox").style.display = "flex";
+}
+function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
 }
