@@ -32,8 +32,8 @@ const presentes = [
     { nome: "AirFryer", valor: 350.00, img: "img/AirFray.jpeg" },
     { nome: "Psicólogo para os noivos não surtarem", valor: 350.00, img: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=500&q=80" },
     { nome: "Diárias no hotel 5 estrelas", valor: 400.00, img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&q=80" },
-    { nome: "Jogar buquê para você", valor: 500.00, img: "BuquePerto.jpeg" },
-    { nome: "Jogar buquê longe da sua mulher", valor: 500.00, img: "img/BuqueLonge.jpeg" },
+    { nome: "Jogar buquê para você", valor: 110.00, img: "img/BuquePerto.jpeg" },
+    { nome: "Jogar buquê longe da sua mulher", valor: 150.00, img: "img/BuqueLonge.jpeg" },
     { nome: "Microondas", valor: 550.00, img: "img/Microondas.jpeg" },
     { nome: "Deus te iluminou e vc resolveu ajudar na viagem", valor: 986.22, img: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=500&q=80" },
     { nome: "Aluguel de bebê para treinamento", valor: 2470.30, img: "img/Bebeptreinamento.jpeg" },
@@ -41,12 +41,16 @@ const presentes = [
     { nome: "Poder reclamar do casamento ou festa", valor: 99999.00, img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGRirTyWL30TF18uyl4Cs5yZfy3DtaphUexMZG5SnkOSrJhGanLLAhzAKxgQ1ocD5cu_Ln5hLbL4FifN5JwCE5uWEaos5fBQNKkIjJXF5m1hdPcPFgy1mOepwrK_rQDRBskOnzAIAp_Xv7/s1600/Meme+do+ET+Me+Solta+Miga+Mandrak+Concurso+Photoshop.jpg" }
 ];
 
-// 2. CARREGAR PRESENTES (Ordenados do menor para o maior valor)
+// 2. CARREGAR PRESENTES
 function renderGifts() {
     const container = document.getElementById('lista-presentes-container');
     
-    // Ordena a lista de forma crescente
-    presentes.sort((a, b) => a.valor - b.valor);
+    // Ordena a lista de forma crescente, MAS força os itens do "buquê" a ficarem juntos na tela
+    presentes.sort((a, b) => {
+        let valA = a.nome.includes("buquê") ? 110 : a.valor;
+        let valB = b.nome.includes("buquê") ? 110 : b.valor;
+        return valA - valB;
+    });
 
     presentes.forEach(item => {
         const card = document.createElement('div');
