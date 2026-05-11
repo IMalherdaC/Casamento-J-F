@@ -28,7 +28,7 @@ const presentes = [
     { nome: "Jogo de prato para o primeiro jantar dos noivos (Real)", valor: 220.00, img: "img/Jogo de prato para o primeiro jantar dos noivos.jpeg" },
     { nome: "Gasolina pro carro de fuga da sogra", valor: 250.00, img: "img/casal_fugindo_sogra.jpg" },
     { nome: "Aspirador de pó", valor: 250.00, img: "img/Aspirador de pó.jpeg" },
-    { nome: "Conjunto de Panelas", valor: 299.90, img: "img/Conjunto de Panela.jpeg" },
+    { nome: "Conjunto de Panelas", valor: 299.90, img: "img/conjuntodepanelas.jpeg" },
     { nome: "AirFryer", valor: 350.00, img: "img/AirFray.jpeg" },
     { nome: "Psicólogo para os noivos não surtarem", valor: 350.00, img: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=500&q=80" },
     { nome: "Diárias no hotel 5 estrelas", valor: 400.00, img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&q=80" },
