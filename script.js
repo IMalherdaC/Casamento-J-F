@@ -35,10 +35,6 @@ const presentes = [
     { nome: "Jogar buquê para você", valor: 110.00, img: "img/BuquePerto.jpeg" },
     { nome: "Jogar buquê longe da sua mulher", valor: 150.00, img: "img/BuqueLonge.jpeg" },
     { nome: "Microondas", valor: 550.00, img: "img/Microondas.jpeg" },
-    { nome: "Deus te iluminou e vc resolveu ajudar na viagem", valor: 986.22, img: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=500&q=80" },
-    { nome: "Aluguel de bebê para treinamento", valor: 2470.30, img: "img/Bebeptreinamento.jpeg" },
-    { nome: "Patrocínio Premium - Cota Ouro Padrinho Rico", valor: 5000.00, img: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=500&q=80" },
-    { nome: "Poder reclamar do casamento ou festa", valor: 99999.00, img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGRirTyWL30TF18uyl4Cs5yZfy3DtaphUexMZG5SnkOSrJhGanLLAhzAKxgQ1ocD5cu_Ln5hLbL4FifN5JwCE5uWEaos5fBQNKkIjJXF5m1hdPcPFgy1mOepwrK_rQDRBskOnzAIAp_Xv7/s1600/Meme+do+ET+Me+Solta+Miga+Mandrak+Concurso+Photoshop.jpg" }
 ];
 
 // 2. CARREGAR PRESENTES
